@@ -1,0 +1,90 @@
+#include <iostream>
+#include<algorithm>
+#include<unordered_map>
+#include<string>
+#include<set>
+#include<vector>
+using namespace std;
+int main(){
+
+
+    int n,i,b,k,best_case,worst_case,best_index,worst_index,l,l1,j;
+
+
+
+    cin >> n >> k;
+
+
+
+    string s,last_string;
+
+    int string_length[n];
+
+
+    for(j=0;j<n;j++)
+      {
+
+         cin >> s;
+
+
+         b=s.length();
+
+         string_length[j]=b;
+
+      }
+      cin >> last_string;
+
+      sort(string_length,string_length+n);
+
+      b=last_string.length();
+
+      for(i=0;i<n;i++)
+      {
+
+          if(string_length[i]==b)
+          {
+             best_index=i+1;
+              break;
+          }
+
+      }
+
+
+     l=best_index;
+
+    if(l%k!=0)
+    {
+       best_case=(l/k)*5+l;
+    }
+    else
+    {
+       best_case=((l/k)-1)*5+l;
+    }
+
+      for(i=n-1;i>=0;i--)
+      {
+          if(string_length[i]==b)
+          {
+              worst_index=i+1;
+              break;
+          }
+
+      }
+      l1=worst_index;
+
+      if(l1%k!=0)
+       {
+
+         worst_case=(l1/k)*5+l1;
+
+       }
+
+    else
+     {
+        worst_case=((l1/k)-1)*5+l1;
+     }
+
+      cout << best_case << " " << worst_case;
+
+    return 0;
+}
