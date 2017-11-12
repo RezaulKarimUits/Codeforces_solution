@@ -1,0 +1,96 @@
+#include <iostream>
+#include<cstring>
+#include<stdio.h>
+#include<set>
+#include<vector>
+using namespace std;
+char s[50010];
+int main(){
+    int i,l=0,u=0,t=0,p=0,last=0,last1,b,j;
+    set<char> c; 
+    scanf("%s",s);
+    b=strlen(s);
+
+    for(i=0;i<=b-26;i++)
+    {
+        if(last!=0)
+        {
+            break;
+        }
+      
+        for(j=i;j<=i+25;j++)
+        {
+        if(s[j]<='Z'&&s[j]>='A')
+        {
+            c.insert(s[j]);
+        }
+        if(s[j]=='?')
+         {
+           l++;
+         }
+ 
+        if((c.size()+l==26))
+        {
+            last=j;
+            break;
+        }
+    }
+        l=0;
+        if(last==0){
+            c.clear();
+        }      
+    }
+
+    set<char>:: iterator it;
+    char ch;
+
+    vector<char>v;
+
+    if(last==0)
+    {
+        cout <<"-1";
+    }
+    else
+    {
+    for( ch='A';ch<='Z';ch++)
+    {
+        for(it=c.begin();it!=c.end();it++)
+           {
+               if(ch==*it)
+               {
+
+                  t++;
+                   break;
+               }
+           }
+        if(t==0)
+            {
+                v.push_back(ch);
+            }
+        t=0;
+    }
+   last1=last-25;
+
+   for(i=last1;i<=last;i++)
+    {
+        if(s[i]=='?')
+         {
+           s[i]=v[u];
+            u++;
+         }
+   }
+        for(i=0;i<b;i++)
+            {
+                if(s[i]=='?')
+                {
+                    s[i]='A';
+                    cout << s[i];
+                }
+               else
+               {
+                   cout <<s[i];
+              }
+          }
+    }
+    return 0;
+}
