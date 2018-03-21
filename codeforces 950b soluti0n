@@ -1,0 +1,88 @@
+#include <iostream>
+#include<cmath>
+#include<vector>
+#include<set>
+#include<queue>
+#include<algorithm>
+using namespace std;
+
+int main()
+{
+   long long int n,m,i,j,sum=0,sum1=0,p=0;
+
+   cin >> n>> m;
+
+   int a[n],a1[m];
+
+   for(i=0;i<n;i++)
+   {
+
+       cin >> a[i];
+   }
+   for(i=0;i<m;i++)
+   {
+
+       cin >> a1[i];
+   }
+
+    sum1=a1[0];
+    sum=a[0];
+
+   int b=max(n,m);
+
+    if(b==n)
+    {
+
+   for(i=0,j=0;i<b;)
+   {
+       if(sum>sum1)
+       {
+           j++;
+           sum1=sum1+a1[j];
+
+
+       }
+       else if(sum<sum1)
+       {
+          i++;
+           sum=sum+a[i];
+
+       }
+       else
+       {
+           p++;
+            i++,j++;
+           sum=a[i],sum1=a1[j];
+       }
+   }
+    }
+   else
+   {
+        for(i=0,j=0;j<b;)
+
+       if(sum>sum1)
+       {
+           j++;
+           sum1=sum1+a1[j];
+
+
+       }
+       else if(sum<sum1)
+       {
+          i++;
+           sum=sum+a[i];
+
+       }
+       else
+       {
+           p++;
+            i++,j++;
+           sum=a[i],sum1=a1[j];
+       }
+
+   }
+
+
+cout << p;
+  return 0;
+}
