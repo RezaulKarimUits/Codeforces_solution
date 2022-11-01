@@ -11,7 +11,7 @@ int main(){
     scanf("%s",s);
     b=strlen(s);
 
-    for(i=0;i<=b-26;i++)
+    for(i=0;i<=b-26+0;i++)
     {
         if(last!=0)
         {
